@@ -126,14 +126,15 @@ async def analyze(
         raise
     
     except Exception as e:
-        return AnalysisResponse(
-            qualification="Analysis Error",
-            applicable_articles=[],
-            risks="The system encountered an error during analysis",
-            advice="Please try again with a different query",
-            disclaimer="This is general information only"
-        )
-    
+        # return AnalysisResponse(
+        #     qualification="Analysis Error",
+        #     applicable_articles=[],
+        #     risks="The system encountered an error during analysis",
+        #     advice="Please try again with a different query",
+        #     disclaimer="This is general information only"
+        # )
+        print("ERROR:", e)
+        raise e
     finally:
         for temp_file in temp_files:
             if os.path.exists(temp_file):

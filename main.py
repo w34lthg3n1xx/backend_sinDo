@@ -45,7 +45,7 @@ app.add_middleware(SecurityMiddleware)
 
 app.include_router(analysis_router)
 
-@app.get("/health")
+@app.get("/health") 
 async def health_check():
     """Simple health check endpoint"""
     return {"status": "ok"}

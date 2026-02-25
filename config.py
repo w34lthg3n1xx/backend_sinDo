@@ -3,14 +3,16 @@ Configuration - Legal Assistant Backend
 """
 
 import os
+from dotenv import load_dotenv
 from typing import Optional, Set
 
 # ===== GEMINI API CONFIGURATION =====
+load_dotenv()
 GEMINI_API_KEY: Optional[str] = os.getenv("GEMINI_API_KEY")
 if not GEMINI_API_KEY:
     raise ValueError("GEMINI_API_KEY environment variable must be set")
 
-GEMINI_MODEL = "gemini-2.0-flash"
+GEMINI_MODEL = "gemini-2.5-flash"
 GEMINI_TEMPERATURE = 0.2  # Low variance for consistency
 GEMINI_MAX_TOKENS = 2000
 GEMINI_TOP_P = 0.9
@@ -71,21 +73,21 @@ ENABLE_OCR = os.getenv("ENABLE_OCR", "false").lower() == "true"
 OCR_MAX_CHARS = 5000  
 
 # ===== GEMINI SAFETY SETTINGS =====
-GEMINI_SAFETY_SETTINGS = [
-    {
-        "category": "HARM_CATEGORY_HATE_SPEECH",
-        "threshold": "BLOCK_ALL"
-    },
-    {
-        "category": "HARM_CATEGORY_HARASSMENT",
-        "threshold": "BLOCK_ALL"
-    },
-    {
-        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-        "threshold": "BLOCK_SOME"
-    },
-    {
-        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-        "threshold": "BLOCK_SOME"
-    }
-]
+# GEMINI_SAFETY_SETTINGS = [
+#     {
+#         "category": "HARM_CATEGORY_HATE_SPEECH",
+#         "threshold": "BLOCK_ALL"
+#     },
+#     {
+#         "category": "HARM_CATEGORY_HARASSMENT",
+#         "threshold": "BLOCK_ALL"
+#     },
+#     {
+#         "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+#         "threshold": "BLOCK_SOME"
+#     },
+#     {
+#         "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+#         "threshold": "BLOCK_SOME"
+#     }
+# ]

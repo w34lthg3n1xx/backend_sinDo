@@ -33,9 +33,7 @@ def sanitize_and_validate_text(user_input: Optional[str]) -> str:
         if keyword in text_lower:
             # Replace with neutral marker
             text = text.replace(keyword, "[REDACTED]")
-    
-    # Remove suspicious patterns (e.g., "system:", "ignore instructions")
-    text = re.sub(r'(system\s*:|ignore|bypass|forget|override)', '[REDACTED]', text, flags=re.IGNORECASE)
+        text = re.sub(r'(system\s*:|ignore|bypass|forget|override)', '[REDACTED]', text, flags=re.IGNORECASE)
     
     # Remove multiple consecutive newlines
     text = re.sub(r'\n{3,}', '\n\n', text)

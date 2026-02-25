@@ -37,8 +37,8 @@ class FileCleanup:
             
             file_size = os.path.getsize(file_path)
             
-            # Don't bother overwriting tiny files (<1KB)
-            if file_size > 1024:
+            # Don't bother overwriting tiny files (<512Bytes)
+            if file_size > 512:
                 # Multiple overwrite passes
                 for _ in range(FileCleanup.OVERWRITE_PASSES):
                     with open(file_path, "wb") as f:
@@ -59,7 +59,7 @@ class FileCleanup:
         
         except Exception as e:
             if verbose:
-                pass  # Don't log
+                pass 
             return False
     
     @staticmethod
