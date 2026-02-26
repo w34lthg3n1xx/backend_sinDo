@@ -36,9 +36,9 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # In production: specify Flutter app domain
-    allow_credentials=False,  # Stateless
-    allow_methods=["POST"],
-    allow_headers=["Content-Type"],
+    allow_credentials=True,  # Stateless
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.add_middleware(SecurityMiddleware)
