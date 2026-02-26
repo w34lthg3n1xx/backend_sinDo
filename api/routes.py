@@ -105,8 +105,8 @@ async def analyze(
         if request_data.video_url:
             extracted_text += f"\n[Video URL for Analysis]: {request_data.video_url}"
         
-        if len(extracted_text) > 3000:
-            extracted_text = extracted_text[:3000] + "...[truncated]"
+        # if len(extracted_text) > 3000:
+        #     extracted_text = extracted_text[:3000] + "...[truncated]"
         
         legal_context = legal_loader.load_relevant_context(extracted_text)
         
@@ -138,6 +138,7 @@ async def analyze(
     finally:
         for temp_file in temp_files:
             if os.path.exists(temp_file):
+                cleanup_temp_file(temp_file)
                 secure_delete_file(temp_file)
         
         gc.collect()

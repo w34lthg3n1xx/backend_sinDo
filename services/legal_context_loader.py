@@ -4,6 +4,8 @@ Legal Document Loader - Load from database/ folder
 
 import os
 from config import DATABASE_PATH
+from utils.pdf_processor import extract_text_from_pdf
+
 
 class LegalContextLoader:
     """Load relevant legal texts from database/ folder"""
@@ -23,8 +25,7 @@ class LegalContextLoader:
             if filename.endswith((".txt", ".md", ".pdf")):
                 filepath = os.path.join(self.database_path, filename)
                 try:
-                    with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
-                        documents[filename] = f.read()
+                    documents[filename] = extract_text_from_pdf(filepath)
                 except Exception:
                     pass
         

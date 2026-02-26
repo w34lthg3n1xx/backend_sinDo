@@ -40,6 +40,7 @@ CONSTRAINTS:
     - Help with harassment, defamation, or identity theft
     - Give personalized legal counsel (refer to qualified lawyers)
 6. Keep responses clear, structured, and educational.
+7. Every single answer inside the JSON must be in french(non negociable)
 
 LEGAL CONTEXT (Official Legal Frameworks):
 {legal_context}
